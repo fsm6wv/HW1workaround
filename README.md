@@ -1,7 +1,7 @@
 # Homework 1 - Responding to Change
 
 ## Authors
-1) Name, netid, [GitHub profile name]
+1) Eric Sheetz, fsm6wv, [RelinquentZebra]
 2) Dor Frechter, huz4kk, [dorfrechter]
 3) Name, netid, [GitHub profile name]
 
