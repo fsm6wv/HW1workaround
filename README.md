@@ -13,7 +13,7 @@
 
 List the primary contributions of each author. It is recommended to update this with your contributions after each coding session.:
 
-### [Dor - replace this with their name]
+### [Eric Sheetz]
 
 * Author 1 contributions
 * as a bulleted list
