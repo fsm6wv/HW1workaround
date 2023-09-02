@@ -3,7 +3,7 @@
 ## Authors
 1) Eric Sheetz, fsm6wv, [RelinquentZebra]
 2) Dor Frechter, huz4kk, [dorfrechter]
-3) Name, netid, [GitHub profile name]
+3) Christina Yang, gca9aa, [cayang17]
 
 ## To Run
 
@@ -25,7 +25,7 @@ List the primary contributions of each author. It is recommended to update this 
 * as a bulleted list
 * each line starts with an asterisk and a space
 
-### [Author 3 - replace this with their name]
+### [Christina Yang]
 
 * Author 3 contributions
 * as a bulleted list
