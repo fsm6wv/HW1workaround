@@ -3,7 +3,7 @@
 ## Authors
 1) Eric Sheetz, fsm6wv, [RelinquentZebra]
 2) Dor Frechter, huz4kk, [dorfrechter]
-3) Name, netid, [GitHub profile name]
+3) Naaaaaaaaaaaaaaaaaaaae, netid, [GitHub profile name]
 
 ## To Run
 
