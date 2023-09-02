@@ -2,7 +2,7 @@
 
 ## Authors
 1) Name, netid, [GitHub profile name]
-2) Name, netid, [GitHub profile name]
+2) Dor Frechter, huz4kk, [dorfrechter]
 3) Name, netid, [GitHub profile name]
 
 ## To Run
