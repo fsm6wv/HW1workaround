@@ -4,6 +4,8 @@ import java.lang.*;
 import java.util.Arrays;
 
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
 public class Main {
     public static void main(String[] args) {
         int Representatives = 435;
@@ -37,8 +39,11 @@ public class Main {
                 System.out.println(Arrays.toString(fileline));
             }
         }
-        catch(Exception e){
-            System.out.println("Unable to read file");
+        catch(IOException e ){
+            System.out.println("Unable to read file - IOException");
+            System.exit(0);
+        }catch(CsvValidationException ee){
+            System.out.println("Unable to read file - CsvValidationException");
             System.exit(0);
         }
 
