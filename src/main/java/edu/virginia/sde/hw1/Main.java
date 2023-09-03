@@ -37,6 +37,7 @@ public class Main {
             //Description: Used to read file line by line till end of file
             while((fileline=csvReader.readNext())!=null){
                 System.out.println(Arrays.toString(fileline));
+                //Add here a way to split the lines into name and population, validate pop. value, store both
             }
         }
         catch(IOException e ){
