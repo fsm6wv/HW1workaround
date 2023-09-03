@@ -1,5 +1,7 @@
 package edu.virginia.sde.hw1;
 import java.io.*;
+import java.lang.*;
+//import com.opencsv.CSVReader;
 public class Main {
     public static void main(String[] args) {
         int Representatives = 435;
@@ -22,13 +24,13 @@ public class Main {
             //no 2nd arg, default 435
         }
         System.out.println(Representatives);
-        //String file = args[0];
-        //try {
-        //    FileReader filereader = new FileReader(file);
-        //}
-        //catch(Exception e){
+        String file = args[0];
+        try(FileReader filereader = new FileReader(file); CSVReader csvReader = new CSVReader(filereader)) {
 
-        //}
+        }
+        catch(Exception e){
+
+        }
 
     }
 }
