@@ -1,6 +1,8 @@
 package edu.virginia.sde.hw1;
 import java.io.*;
 import java.lang.*;
+import java.util.Arrays;
+
 import com.opencsv.CSVReader;
 public class Main {
     public static void main(String[] args) {
@@ -32,11 +34,12 @@ public class Main {
             //Resource Used: https://www.geeksforgeeks.org/reading-csv-file-java-using-opencsv
             //Description: Used to read file line by line till end of file
             while((fileline=csvReader.readNext())!=null){
-
+                System.out.println(Arrays.toString(fileline));
             }
         }
         catch(Exception e){
-
+            System.out.println("Unable to read file");
+            System.exit(0);
         }
 
     }
