@@ -28,11 +28,16 @@ public class Main {
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
         //Description: learning about try-with-resources (line 30)
         try(FileReader filereader = new FileReader(file); CSVReader csvReader = new CSVReader(filereader)) {
+            String [] fileline;
+            //Resource Used: https://www.geeksforgeeks.org/reading-csv-file-java-using-opencsv
+            //Description: Used to read file line by line till end of file
+            while((fileline=csvReader.readNext())!=null){
 
-        //}
-        //catch(Exception e){
+            }
+        }
+        catch(Exception e){
 
-        //}
+        }
 
     }
 }
