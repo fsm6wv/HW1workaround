@@ -30,8 +30,8 @@ public class Main extends JeffersonApportionment{
         //Description: used Integer class to parse/check user input (line 31)
         if (args.length==2) Representatives = Integer.parseInt(args[1]);
         else Representatives=435;
-
         System.out.println(Representatives);
+
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
