@@ -25,20 +25,17 @@ public class Main extends JeffersonApportionment{
 //            //do nothing
 //            //no 2nd arg, default 435
 //        }
-        //int Representatives;
+        int Representatives;
+        //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
+        //Description: used Integer class to parse/check user input (line 31)
+        if (args.length==2) Representatives = Integer.parseInt(args[1]);
+        else Representatives=435;
 
-//        int Representatives = 435;
-//        if (args.length ==2 ) {
-//            Representatives = numOfReps(args[1],args.length );
-//        }
-//        System.out.println(Representatives);
+        System.out.println(Representatives);
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         int totalpop = getTotalPopulation(dataList,dataMap);
-        for (String x: dataList){
-            System.out.println(x);
-        }
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
         //Description: learning about try-with-resources (line 30)
 
