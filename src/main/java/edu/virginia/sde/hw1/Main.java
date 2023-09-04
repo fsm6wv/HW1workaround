@@ -4,37 +4,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Main extends DataReading{
+public class Main extends JeffersonApportionment{
     public static void main(String[] args) {
-        int Representatives = 435;
-        //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
-        //Description: used Integer class to parse/check user input (line 11)
-        try{
-            int numReps = Integer.parseInt(args[1]);
-            if(numReps<=0) {
-                System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
-                System.exit(0);
-            }
-            Representatives = numReps;
-        }
-        catch(NumberFormatException e){
-            System.out.println("Invalid User Input - Number of representatives must be an integer");
-            System.exit(0);
-        }
-        catch(IndexOutOfBoundsException n){
-            //do nothing
-            //no 2nd arg, default 435
-        }
+//        int Representatives = 435;
+//        //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
+//        //Description: used Integer class to parse/check user input (line 11)
+//        try{
+//            int numReps = Integer.parseInt(args[1]);
+//            if(numReps<=0) {
+//                System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
+//                System.exit(0);
+//            }
+//            Representatives = numReps;
+//        }
+//        catch(NumberFormatException e){
+//            System.out.println("Invalid User Input - Number of representatives must be an integer");
+//            System.exit(0);
+//        }
+//        catch(IndexOutOfBoundsException n){
+//            //do nothing
+//            //no 2nd arg, default 435
+//        }
+        int Representatives = numOfReps(args[1]);
         System.out.println(Representatives);
-        // keep everything up to here, this is all good and important.
-
-
         String file = args[0];
-        //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
-        //Description: learning about try-with-resources (line 30)
         ArrayList<String> dataList = ListMaker(file);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
-
+        int totalpop = getTotalPopulation(dataList,dataMap);
+        //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+        //Description: learning about try-with-resources (line 30)
 
 
 //        try(FileReader filereader = new FileReader(file); CSVReader csvReader = new CSVReader(filereader)) {
