@@ -21,7 +21,7 @@ jar {
     archivesBaseName = "Apportionment"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        attributes "Main-class": "edu.virginia.cs.nbateams.Main"
+        attributes "Main-class": "edu.virginia.sde.hw1.Main"
     }
 
     from {
