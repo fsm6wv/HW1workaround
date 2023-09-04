@@ -12,8 +12,8 @@ import java.util.HashMap;
 public class DataReading {
     public static ArrayList<String> ListMaker(String path) {
         ArrayList<String> DataList = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {// used chatgpt with format: "write a java function that reads a csv and stores it into a hashmap". Changed a bit of it to fit the assignment better
+        //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             br.readLine();
             String line;
             while ((line = br.readLine()) != null) {
