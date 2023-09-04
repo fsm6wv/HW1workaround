@@ -13,6 +13,7 @@ public class JeffersonApportionment extends DataReading{
         }
         return totalpop;
     }
+    //public static int find
 
 
 }
