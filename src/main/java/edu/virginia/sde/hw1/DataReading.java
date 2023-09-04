@@ -14,7 +14,7 @@ public class DataReading {
         ArrayList<String> DataList = new ArrayList<>();
         //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            br.readLine();
+            br.readLine(); //first line is titles
             String line;
             while ((line = br.readLine()) != null) {
                 DataList.add(line);
@@ -48,7 +48,7 @@ public class DataReading {
     public static int numOfReps(String path){
         int Representatives = 435;
         //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
-        //Description: used Integer class to parse/check user input (line 11)
+        //Description: used Integer class to parse/check user input (line 53)
         try{
             int numReps = Integer.parseInt(path);
             if(numReps<=0) {
