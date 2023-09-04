@@ -27,13 +27,9 @@ public class Main extends JeffersonApportionment{
 //        }
         int Representatives;
         //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
-        //Description: used Integer class to parse/check user input (line 53)
-        if (args.length==2) {
-            Representatives = Integer.parseInt(args[1]);
-        }
-        else{
-            Representatives=435;
-        }
+        //Description: used Integer class to parse/check user input (line 31)
+        if (args.length==2) Representatives = Integer.parseInt(args[1]);
+        else Representatives=435;
 
         System.out.println(Representatives);
         String file = args[0];
