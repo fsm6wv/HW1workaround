@@ -36,7 +36,7 @@ public class DataReading {
         for(String line: list) {
             String[] components = line.split(",");
             if (components.length <= 2) {
-                var state = components[0];
+                var state = components[0].strip();
                 statelist.add(state);
             }
         }
@@ -49,8 +49,8 @@ public class DataReading {
         for(String line: list){
             String[] components = line.split(",");
             if (components.length <=2){
-                var state = components[0];
-                var population = Integer.parseInt(components[1]);
+                var state = components[0].strip();
+                var population = Integer.parseInt(components[1].strip());
                 if (population > 0){
                     datamap.put(state,population);
                 }

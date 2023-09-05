@@ -31,10 +31,8 @@ public class JeffersonApportionment extends DataReading {
                      divisor = divisor * 1.1;
                  }
                  else{
-
                      divisor = divisor*.9;
                  }
-
              }
          }
          HashMap<String, Double> congress= new HashMap<>();
