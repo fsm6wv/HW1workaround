@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -29,6 +30,18 @@ public class DataReading {
 
         }
         return DataList;
+    }
+    public static ArrayList<String> sortedStateListMaker(ArrayList<String> list){
+        ArrayList<String> statelist = new ArrayList<>();
+        for(String line: list) {
+            String[] components = line.split(",");
+            if (components.length <= 2) {
+                var state = components[0];
+                statelist.add(state);
+            }
+        }
+        Collections.sort(statelist);
+        return statelist;
     }
 
     public static HashMap<String, Integer> ListToHashMap(ArrayList<String> list){
