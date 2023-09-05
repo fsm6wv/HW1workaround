@@ -57,6 +57,7 @@ public class DataReading {
             }
         }
         return datamap;
+
     }
     public static int numOfReps(String num, int length){
         int Representatives;
