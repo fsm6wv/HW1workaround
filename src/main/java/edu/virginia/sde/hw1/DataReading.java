@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -30,20 +31,33 @@ public class DataReading {
         }
         return DataList;
     }
+    public static ArrayList<String> sortedStateListMaker(ArrayList<String> list){
+        ArrayList<String> statelist = new ArrayList<>();
+        for(String line: list) {
+            String[] components = line.split(",");
+            if (components.length <= 2) {
+                var state = components[0].strip();
+                statelist.add(state);
+            }
+        }
+        Collections.sort(statelist);
+        return statelist;
+    }
 
     public static HashMap<String, Integer> ListToHashMap(ArrayList<String> list){
         HashMap<String,Integer> datamap = new HashMap<>();
         for(String line: list){
             String[] components = line.split(",");
             if (components.length <=2){
-                var state = components[0];
-                var population = Integer.parseInt(components[1]);
+                var state = components[0].strip();
+                var population = Integer.parseInt(components[1].strip());
                 if (population > 0){
                     datamap.put(state,population);
                 }
             }
         }
         return datamap;
+
     }
     public static int numOfReps(String num, int length){
         int Representatives;

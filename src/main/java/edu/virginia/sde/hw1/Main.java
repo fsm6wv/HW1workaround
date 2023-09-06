@@ -25,6 +25,7 @@ public class Main extends JeffersonApportionment{
 //            //do nothing
 //            //no 2nd arg, default 435
 //        }
+
         int Representatives;
         //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
         //Description: used Integer class to parse/check user input (line 31)
