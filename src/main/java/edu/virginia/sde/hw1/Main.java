@@ -6,35 +6,27 @@ import java.util.HashMap;
 
 public class Main extends JeffersonApportionment{
     public static void main(String[] args) {
-//        int Representatives = 435;
-//        //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
-//        //Description: used Integer class to parse/check user input (line 11)
-//        try{
-//            int numReps = Integer.parseInt(args[1]);
-//            if(numReps<=0) {
-//                System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
-//                System.exit(0);
-//            }
-//            Representatives = numReps;
-//        }
-//        catch(NumberFormatException e){
-//            System.out.println("Invalid User Input - Number of representatives must be an integer");
-//            System.exit(0);
-//        }
-//        catch(IndexOutOfBoundsException n){
-//            //do nothing
-//            //no 2nd arg, default 435
-//        }
-
-        int Representatives;
+        int Representatives = 435;
         //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
-        //Description: used Integer class to parse/check user input (line 31)
-        if (args.length==2) Representatives = Integer.parseInt(args[1]);
-        else Representatives=435;
+        //Description: used Integer class to parse user input
+        if (args.length>=2) try{
+            int numReps = Integer.parseInt(args[1]);
+            if(numReps<=0) {
+                System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
+                System.exit(0);
+            }
+            Representatives = numReps;
+        }
+        catch(NumberFormatException e){
+            System.out.println("Invalid User Input - Number of representatives must be an integer");
+            System.exit(0);
+        }
         System.out.println(Representatives);
 
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
+        for (String x : dataList) System.out.println(x);
+
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         int totalpop = getTotalPopulation(dataList,dataMap);
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
