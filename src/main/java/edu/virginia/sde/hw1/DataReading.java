@@ -71,6 +71,22 @@ public class DataReading {
         }
         return Representatives;
     }
+    public static int checkNumReps(String[] list){
+        int Representatives = 435;
+        if (list.length>=2) try{
+            int numReps = Integer.parseInt(list[1].strip());
+            if(numReps<=0) {
+                System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
+                System.exit(0);
+            }
+            Representatives = numReps;
+        }
+        catch(NumberFormatException e){
+            System.out.println("Invalid User Input - Number of representatives must be an integer");
+            System.exit(0);
+        }
+        return Representatives;
+    }
 
 
 //    public static HashMap<String, Integer> HashMapMaker(String path){

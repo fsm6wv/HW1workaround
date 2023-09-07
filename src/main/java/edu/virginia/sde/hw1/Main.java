@@ -6,21 +6,9 @@ import java.util.HashMap;
 
 public class Main extends JeffersonApportionment{
     public static void main(String[] args) {
-        int Representatives = 435;
         //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
         //Description: used Integer class to parse user input
-        if (args.length>=2) try{
-            int numReps = Integer.parseInt(args[1]);
-            if(numReps<=0) {
-                System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
-                System.exit(0);
-            }
-            Representatives = numReps;
-        }
-        catch(NumberFormatException e){
-            System.out.println("Invalid User Input - Number of representatives must be an integer");
-            System.exit(0);
-        }
+        int Representatives = checkNumReps(args);
         System.out.println(Representatives);
 
         String file = args[0];
