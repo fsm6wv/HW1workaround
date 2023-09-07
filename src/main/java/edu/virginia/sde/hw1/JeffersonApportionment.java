@@ -28,10 +28,10 @@ public class JeffersonApportionment extends DataReading {
              }
              if (RepCount != RealnumOfReps) {
                  if (RepCount > RealnumOfReps) {
-                     divisor = divisor * 10/9;
+                     divisor = divisor * 11/10;
                  }
                  else{
-                     divisor = divisor*10/9;
+                     divisor = divisor*9/10;
                  }
              }
          }
