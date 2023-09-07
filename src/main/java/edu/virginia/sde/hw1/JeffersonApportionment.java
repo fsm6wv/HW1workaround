@@ -17,7 +17,7 @@ public class JeffersonApportionment extends DataReading {
         }
         return totalpop;
     }
-     public static HashMap<String, Double> findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
+     public static HashMap<String, Double> findRepMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
          int totalpop = getTotalPopulation(statelist, datamap);
          double divisor = totalpop / RealnumOfReps;
          int RepCount = 0;
