@@ -17,9 +17,9 @@ public class JeffersonApportionment extends DataReading {
         }
         return totalpop;
     }
-     public static HashMap<String, Double> findRepMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
+     public static HashMap<String, Integer> findRepNMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
          int totalpop = getTotalPopulation(statelist, datamap);
-         double divisor = totalpop / RealnumOfReps;
+         int divisor = totalpop / RealnumOfReps;
          int RepCount = 0;
          while (RepCount != RealnumOfReps) {
              RepCount = 0;
@@ -28,16 +28,16 @@ public class JeffersonApportionment extends DataReading {
              }
              if (RepCount != RealnumOfReps) {
                  if (RepCount > RealnumOfReps) {
-                     divisor = divisor * 1.1;
+                     divisor = divisor * 10/9;
                  }
                  else{
-                     divisor = divisor*.9;
+                     divisor = divisor*10/9;
                  }
              }
          }
-         HashMap<String, Double> congress= new HashMap<>();
+         HashMap<String, Integer> congress= new HashMap<>();
          for (String state: statelist){
-             congress.put(state,Math.floor(datamap.get(state) / divisor));
+             congress.put(state, datamap.get(state) / divisor);
          }
          return congress;
      }
