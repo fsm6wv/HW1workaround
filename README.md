@@ -21,9 +21,9 @@ List the primary con~/Library/Application Support/JetBrains/<product><version>tr
 
 ### [Dor Frechter]
 
-* Author 2 contributions
-* as a bulleted list
-* each line starts with an asterisk and a space
+* Wrote JeffersonApportionment class
+* Wrote the methods dealing with making a hashmap of the states
+* wrote methods to get the number of representatives.
 
 ### [Christina Yang]
 
