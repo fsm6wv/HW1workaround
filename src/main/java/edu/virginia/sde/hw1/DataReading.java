@@ -46,15 +46,23 @@ public class DataReading {
 
     public static HashMap<String, Integer> ListToHashMap(ArrayList<String> list){
         HashMap<String,Integer> datamap = new HashMap<>();
+        int lineNumber=0;
         for(String line: list){
             String[] components = line.split(",");
             if (components.length <=2){
                 var state = components[0].strip();
-                var population = Integer.parseInt(components[1].strip());
-                if (population > 0){
-                    datamap.put(state,population);
+                try {
+                    var population = Integer.parseInt(components[1].strip());
+                    if (population > 0) {
+                        datamap.put(state, population);
+                    }
                 }
+                catch(NumberFormatException e){
+                    System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
+                }
+
             }
+            lineNumber++;
         }
         return datamap;
 

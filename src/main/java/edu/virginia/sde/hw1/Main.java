@@ -10,10 +10,11 @@ public class Main extends JeffersonApportionment{
         //Description: used Integer class to parse user input
         int Representatives = checkNumReps(args);
         System.out.println(Representatives);
+        // should file start at args[1] because of the header row?
+        //No, args simply contains the filepath, not each line. args[1] is the representative input
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         for (String x : dataList) System.out.println(x);
-
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         int totalpop = getTotalPopulation(dataList,dataMap);
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
