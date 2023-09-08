@@ -15,7 +15,6 @@ public class Main extends JeffersonApportionment{
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         for (String x : dataList) System.out.println(x);
-
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         int totalpop = getTotalPopulation(dataList,dataMap);
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
