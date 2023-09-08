@@ -18,6 +18,12 @@ public class JeffersonApportionment extends DataReading {
         return totalpop;
     }
     public static int findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps){
+        //check to make sure that RealnumOfReps is a positive/ nonzero number
+        if(RealnumOfReps <= 0){
+            System.out.println("Improper input - Real representative count should be greater than 0" +
+                    ", program ends");
+            System.exit(0);
+        }
         int totalpop = getTotalPopulation(statelist, datamap);
         int divisor = totalpop / RealnumOfReps;
         int RepCount = 0;

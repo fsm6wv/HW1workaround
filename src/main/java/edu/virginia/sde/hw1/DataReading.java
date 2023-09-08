@@ -20,6 +20,11 @@ public class DataReading {
             while ((line = br.readLine()) != null) {
                 DataList.add(line);
             }
+            //check to see if data was read into arraylist
+            if(DataList.size() <= 0){
+                System.out.println("File is empty - no data was found, end the program");
+                System.exit(0);
+            }
         } catch (FileNotFoundException e) {
             System.out.println("Invalid filename - file not found");
             System.exit(0);
@@ -27,7 +32,6 @@ public class DataReading {
             System.out.println("Unable to read file - IOException");
             e.printStackTrace();
             System.exit(0);
-
         }
         return DataList;
     }
@@ -59,6 +63,7 @@ public class DataReading {
                 }
                 catch(NumberFormatException e){
                     System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
+                    System.exit(0);
                 }
 
             }

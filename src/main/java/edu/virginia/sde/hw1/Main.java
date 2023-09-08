@@ -8,10 +8,13 @@ public class Main extends JeffersonApportionment{
     public static void main(String[] args) {
         //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
         //Description: used Integer class to parse user input
+        //check to make sure that csv path is entered as a command line argument
+        if(args.length < 1){
+            throw new ArrayIndexOutOfBoundsException("CSV file path is missing - should be entered through" +
+                    "as a command line argument");
+        }
         int Representatives = checkNumReps(args);
         System.out.println(Representatives);
-        // should file start at args[1] because of the header row?
-        //No, args simply contains the filepath, not each line. args[1] is the representative input
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         for (String x : dataList) System.out.println(x);
