@@ -37,9 +37,9 @@ public class JeffersonApportionmentTest {
         ArrayList<String> list = new ArrayList<>();
         list.add("Alabama");
         list.add("Arkansas");
-        HashMap<String, Double> result = new HashMap<>();
-        result.put("Alabama", 7.0);
-        result.put("Arkansas", 4.0);
-        assertEquals(result, JeffersonApportionment.findDivisor(list, map, 11));
+
+        int divisor = 658129;
+        assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 11));
+
     }
 }
