@@ -11,7 +11,7 @@
 
 ## Contributions
 
-List the primary contributions of each author. It is recommended to update this with your contributions after each coding session.:
+List the primary con~/Library/Application Support/JetBrains/<product><version>tributions of each author. It is recommended to update this with your contributions after each coding session.:
 
 ### [Eric Sheetz]
 

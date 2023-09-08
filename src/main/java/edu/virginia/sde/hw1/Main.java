@@ -10,7 +10,7 @@ public class Main extends JeffersonApportionment{
         //Description: used Integer class to parse user input
         int Representatives = checkNumReps(args);
         System.out.println(Representatives);
-
+        // should file start at args[1] because of the header row?
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         for (String x : dataList) System.out.println(x);
