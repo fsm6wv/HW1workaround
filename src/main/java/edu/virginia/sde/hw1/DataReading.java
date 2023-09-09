@@ -69,6 +69,10 @@ public class DataReading {
             }
             lineNumber++;
         }
+        if (datamap.isEmpty()){
+            System.out.println("No valid data entries were found - apportionment aborted.");
+            System.exit(0);
+        }
         return datamap;
 
     }
