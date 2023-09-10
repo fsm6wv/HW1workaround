@@ -10,8 +10,8 @@ public class Main extends JeffersonApportionment{
         //Description: used Integer class to parse user input
         //check to make sure that csv path is entered as a command line argument
         if(args.length < 1){
-            throw new ArrayIndexOutOfBoundsException("CSV file path is missing - should be entered through" +
-                    "as a command line argument");
+            throw new ArrayIndexOutOfBoundsException("CSV file path is missing - should be entered" +
+                    " through as a command line argument");
         }
         int Representatives = checkNumReps(args);
         System.out.println(Representatives);
@@ -20,7 +20,7 @@ public class Main extends JeffersonApportionment{
         ArrayList<String> sortedList = sortedStateListMaker(dataList);
         for (String x : dataList) System.out.println(x);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
-        int totalpop = getTotalPopulation(dataList,dataMap);
+        //int totalpop = getTotalPopulation(dataList,dataMap);
         HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,dataMap,Representatives);
         for (String key: sortedList){
             System.out.println("State: " + key + "           Number of Representatives: " + finalRepMap.get(key));
@@ -29,7 +29,7 @@ public class Main extends JeffersonApportionment{
 
 
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
-        //Description: learning about try-with-resources (line 30)
+        //Description: learning about try-with-resources
 
 
 //        try(FileReader filereader = new FileReader(file); CSVReader csvReader = new CSVReader(filereader)) {
