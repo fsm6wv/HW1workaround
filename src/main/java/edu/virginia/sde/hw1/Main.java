@@ -17,9 +17,17 @@ public class Main extends JeffersonApportionment{
         System.out.println(Representatives);
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
+        ArrayList<String> sortedList = sortedStateListMaker(dataList);
         for (String x : dataList) System.out.println(x);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         int totalpop = getTotalPopulation(dataList,dataMap);
+        HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,dataMap,Representatives);
+        for (String key: sortedList){
+            System.out.println("State: " + key + "           Number of Representatives: " + finalRepMap.get(key));
+        }
+        System.out.println("Total Number of Representatives: " + Representatives);
+
+
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
         //Description: learning about try-with-resources (line 30)
 

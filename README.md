@@ -7,7 +7,11 @@
 
 ## To Run
 
-[Add a brief description of how to build and run your .jar file based on this code]
+[Firstly,open the terminal and use the "./gradlew build" command to build your jar file. It will be in your libs folder within the build folder. 
+To run the file use the command java -jar and then specify the filepath to the jar file followed by the path to the desired csv file. Another
+option is to use the cd command until you reach the folder where the jar and/or csv file is and then just write the names of hte files. An
+example of a command line code is "java -jar Apportionment.jar example_input.csv". Running this command will print an alphabetically sorted list
+of all the states in the file and the # of representatives allocated to each one of them.]
 
 ## Contributions
 

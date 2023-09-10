@@ -42,4 +42,26 @@ public class JeffersonApportionmentTest {
         assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 11));
 
     }
+    @Test
+    public void makeRepMapTest(){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Alabama", 5030053);
+        map.put("Arkansas", 3013756);
+        map.put("Alaska", 736081);
+        map.put("Arizona", 7158923);
+        map.put("Colorado", 5782171);
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Alabama");
+        list.add("Arkansas");
+        list.add("Alaska");
+        list.add("Arizona");
+        list.add("Colorado");
+        HashMap<String, Integer> solution = new HashMap<>();
+        solution.put("Alabama", 7);
+        solution.put("Arkansas", 4);
+        solution.put("Alaska", 1);
+        solution.put("Arizona", 10);
+        solution.put("Colorado", 8);
+        assertEquals(solution, JeffersonApportionment.makeRepNMap(list,map,30));
+    }
 }
