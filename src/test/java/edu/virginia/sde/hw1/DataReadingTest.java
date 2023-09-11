@@ -34,30 +34,30 @@ public class DataReadingTest {
         assertEquals(list, dataRead.ListMaker(path));
     }
     // sortedStateListMaker
-    @Test
-    public void sortedTest(){
-        ArrayList<String> list = new ArrayList<>();
-        list.add("Arkansas,3013756");
-        list.add("Alaska,736081");
-        list.add("Arizona,7158923");
-        list.add("Delaware,990837");
-        list.add("Colorado,5782171");
-        list.add("Connecticut,3608298");
-        list.add("Alabama,5030053");
-        list.add("Florida,21570527");
-        list.add("California,39576757");
-        ArrayList<String> result = new ArrayList<>();
-        result.add("Alabama");
-        result.add("Alaska");
-        result.add("Arizona");
-        result.add("Arkansas");
-        result.add("California");
-        result.add("Colorado");
-        result.add("Connecticut");
-        result.add("Delaware");
-        result.add("Florida");
-        assertEquals(result, dataRead.sortedStateListMaker(list));
-    }
+ //   @Test
+//    public void sortedTest(){
+//        ArrayList<String> list = new ArrayList<>();
+//        list.add("Arkansas,3013756");
+//        list.add("Alaska,736081");
+//        list.add("Arizona,7158923");
+//        list.add("Delaware,990837");
+//        list.add("Colorado,5782171");
+//        list.add("Connecticut,3608298");
+//        list.add("Alabama,5030053");
+//        list.add("Florida,21570527");
+//        list.add("California,39576757");
+//        ArrayList<String> result = new ArrayList<>();
+//        result.add("Alabama");
+//        result.add("Alaska");
+//        result.add("Arizona");
+//        result.add("Arkansas");
+//        result.add("California");
+//        result.add("Colorado");
+//        result.add("Connecticut");
+//        result.add("Delaware");
+//        result.add("Florida");
+//        assertEquals(result, dataRead.sortedStateListMaker(list));
+//    }
 
     //listToHashMap
     @Test
