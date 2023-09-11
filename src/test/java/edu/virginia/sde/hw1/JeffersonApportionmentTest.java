@@ -27,19 +27,18 @@ public class JeffersonApportionmentTest {
         assertEquals(15938813, jeff.getTotalPopulation(list, map));
     }
 
-    // findDivisor()
 //    @Test
 //    public void findDivisorTest(){
 //        // putting data from sample code into hashmap
 //        HashMap<String, Integer> map = new HashMap<>();
-//        map.put("Alabama", 5030053);
-//        map.put("Arkansas", 3013756);
+//        map.put("Alabama", 53);
+//        map.put("Arkansas", 31);
 //        ArrayList<String> list = new ArrayList<>();
 //        list.add("Alabama");
 //        list.add("Arkansas");
 //
 //        int divisor = 658129;
-//        assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 11));
+//        assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 5));
 //
 //    }
     @Test
