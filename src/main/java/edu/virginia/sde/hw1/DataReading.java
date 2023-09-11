@@ -62,7 +62,7 @@ public class DataReading {
             }
             catch(NumberFormatException e){
                 System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
-                System.exit(0);
+                //System.exit(0);
             }
             lineNumber++;
         }
