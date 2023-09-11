@@ -26,21 +26,16 @@ public class JeffersonApportionmentTest {
         list.add("Arkansas");
         assertEquals(15938813, jeff.getTotalPopulation(list, map));
     }
+/*
+   @Test
+    public void findDivisorTest(){
+        DataReading dataRead = new DataReading();
+        ArrayList<String> list = dataRead.ListMaker("/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/example1.csv");
+        HashMap<String, Integer> map = dataRead.ListToHashMap(list);
+        int result =
+   }
 
-//    @Test
-//    public void findDivisorTest(){
-//        // putting data from sample code into hashmap
-//        HashMap<String, Integer> map = new HashMap<>();
-//        map.put("Alabama", 53);
-//        map.put("Arkansas", 31);
-//        ArrayList<String> list = new ArrayList<>();
-//        list.add("Alabama");
-//        list.add("Arkansas");
-//
-//        int divisor = 658129;
-//        assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 5));
-//
-//    }
+ */
     @Test
     public void makeRepMapTest(){
         HashMap<String, Integer> map = new HashMap<>();
