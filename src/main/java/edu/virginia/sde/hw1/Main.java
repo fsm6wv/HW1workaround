@@ -15,16 +15,19 @@ public class Main extends JeffersonApportionment{
         }
         //int Representatives = checkNumReps(args);
         int Representatives = 4;
-        System.out.println(Representatives);
+        System.out.println("Number of Representatives: " + Representatives);
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
         ArrayList<String> sortedList = sortedStateListMaker(dataList);
-        for (String x : dataList) System.out.println(x);
+        //for (String x : dataList) System.out.println(x);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         //int totalpop = getTotalPopulation(dataList,dataMap);
         HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,dataMap,Representatives);
-        for (String key: sortedList){
-            System.out.println("State: " + key + "           Number of Representatives: " + finalRepMap.get(key));
+        for (String key: sortedList) {
+            {
+                if (finalRepMap.get(key) != null)
+                    System.out.println("State: " + key + "           Number of Representatives: " + finalRepMap.get(key));
+            }
         }
         System.out.println("Total Number of Representatives: " + Representatives);
 

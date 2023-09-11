@@ -53,6 +53,9 @@ public class DataReading {
         int lineNumber=0;
         for(String line: list){
             String[] components = line.split(",");
+            for (String x: components){
+                System.out.println(x);
+            }
             var state = components[0].strip();
             try {
                 var population = Integer.parseInt(components[1].strip());
