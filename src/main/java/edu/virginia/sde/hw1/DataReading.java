@@ -58,9 +58,11 @@ public class DataReading {
             }
             var state = components[0].strip();
             try {
-                var population = Integer.parseInt(components[1].strip());
-                if (population > 0) {
-                    datamap.put(state, population);
+                if (components.length > 1) {
+                    var population = Integer.parseInt(components[1].strip());
+                    if (population > 0) {
+                        datamap.put(state, population);
+                    }
                 }
             }
             catch(NumberFormatException e){
