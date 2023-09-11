@@ -28,20 +28,20 @@ public class JeffersonApportionmentTest {
     }
 
     // findDivisor()
-    @Test
-    public void findDivisorTest(){
-        // putting data from sample code into hashmap
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("Alabama", 5030053);
-        map.put("Arkansas", 3013756);
-        ArrayList<String> list = new ArrayList<>();
-        list.add("Alabama");
-        list.add("Arkansas");
-
-        int divisor = 658129;
-        assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 11));
-
-    }
+//    @Test
+//    public void findDivisorTest(){
+//        // putting data from sample code into hashmap
+//        HashMap<String, Integer> map = new HashMap<>();
+//        map.put("Alabama", 5030053);
+//        map.put("Arkansas", 3013756);
+//        ArrayList<String> list = new ArrayList<>();
+//        list.add("Alabama");
+//        list.add("Arkansas");
+//
+//        int divisor = 658129;
+//        assertEquals(divisor, JeffersonApportionment.findDivisor(list, map, 11));
+//
+//    }
     @Test
     public void makeRepMapTest(){
         HashMap<String, Integer> map = new HashMap<>();

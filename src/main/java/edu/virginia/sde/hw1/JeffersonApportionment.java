@@ -24,24 +24,29 @@ public class JeffersonApportionment extends DataReading {
                     ", program ends");
             System.exit(0);
         }
+        int low = 1;
         int totalpop = getTotalPopulation(statelist, datamap);
         int divisor = totalpop / RealnumOfReps;
-        int RepCount = 0;
-        while (RepCount != RealnumOfReps) {
+        int high = Integer.MAX_VALUE;
+        int RepCount =0;
+        while (low<= high){
             RepCount = 0;
+            divisor= low + (high-low)/2;
             for (String state : statelist) {
                 RepCount += Math.floor(datamap.get(state) / divisor);
             }
-            if (RepCount != RealnumOfReps) {
-                if (RepCount > RealnumOfReps) {
-                    divisor = divisor * 11/10;
-                }
-                else{
-                    divisor = divisor*9/10;
-                }
+            if (RepCount == RealnumOfReps){
+                return divisor;
             }
-        }
-        return divisor;
+            else if(RepCount > RealnumOfReps){
+                low = divisor+1;
+            }
+            else {
+                high = divisor-1;
+
+            }
+    }
+        return high;
     }
      public static HashMap<String, Integer> makeRepNMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
          int divisor = findDivisor(statelist,datamap,RealnumOfReps);
