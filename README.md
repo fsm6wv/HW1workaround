@@ -27,7 +27,8 @@ List the primary con~/Library/Application Support/JetBrains/<product><version>tr
 
 * Wrote JeffersonApportionment class
 * Wrote the methods dealing with making a hashmap of the states
-* wrote methods to get the number of representatives.
+* wrote methods to get the number of representatives using binary search and hashmaps.
+* Tested with several csv files
 
 ### [Christina Yang]
 

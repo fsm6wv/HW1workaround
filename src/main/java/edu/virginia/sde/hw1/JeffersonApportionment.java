@@ -19,18 +19,18 @@ public class JeffersonApportionment extends DataReading {
     }
 
      public static HashMap<String, Integer> makeRepNMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
-         int divisor = findDivisor(statelist,datamap,RealnumOfReps);
+         double divisor = findDivisor(statelist,datamap,RealnumOfReps);
          HashMap<String, Integer> congress= new HashMap<>();
          for (String state: statelist) {
+             double x =datamap.get(state) / divisor;
+             int y = (int) x;
              if (datamap.get(state) != null) {
-                 congress.put(state, datamap.get(state) / divisor);
+                 congress.put(state, y);
              }
          }
          return congress;
      }
-
-
-    public static int findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps){
+        public static double findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps){
         //check to make sure that RealnumOfReps is a positive/ nonzero number
         if(RealnumOfReps <= 0){
             System.out.println("Improper input - Real representative count should be greater than 0" +
@@ -42,27 +42,20 @@ public class JeffersonApportionment extends DataReading {
             System.out.println("Improper input - Can not have more Representatives than citizens");
             System.exit(0);
         }
-        int low = 1;
-        int divisor = totalpop / RealnumOfReps;
-        int high = Integer.MAX_VALUE;
-        int RepCount =0;
-        while (low<= high){
+        double divisor = totalpop / RealnumOfReps;
+        int RepCount = 0;
+        while (RepCount != RealnumOfReps) {
             RepCount = 0;
-            divisor= low + (high-low)/2;
             for (String state : statelist) {
-                if( datamap.get(state)!= null){
-                    RepCount += Math.floor(datamap.get(state) / divisor);
+                RepCount += Math.floor(datamap.get(state) / divisor);
+            }
+            if (RepCount != RealnumOfReps) {
+                if (RepCount > RealnumOfReps) {
+                    divisor += divisor *.1;
                 }
-            }
-            if (RepCount == RealnumOfReps){
-                return divisor;
-            }
-            else if(RepCount > RealnumOfReps){
-                low = divisor+1;
-            }
-            else {
-                high = divisor-1;
-
+                else{
+                    divisor -= divisor*.1;
+                }
             }
         }
         return divisor;

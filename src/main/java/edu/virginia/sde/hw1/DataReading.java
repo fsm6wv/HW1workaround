@@ -35,14 +35,13 @@ public class DataReading {
         }
         return DataList;
     }
-    public static ArrayList<String> sortedStateListMaker(ArrayList<String> list){
+    public static ArrayList<String> sortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map){
         ArrayList<String> statelist = new ArrayList<>();
         for(String line: list) {
             String[] components = line.split(",");
-            if (components.length <= 2) {
-                var state = components[0].strip();
+            var state = components[0].strip();
+            if (map.get(state) != null && map.get(state) >0)
                 statelist.add(state);
-            }
         }
         Collections.sort(statelist);
         return statelist;

@@ -13,11 +13,13 @@ public class Main extends JeffersonApportionment{
             throw new ArrayIndexOutOfBoundsException("CSV file path is missing - should be entered" +
                     " through as a command line argument");
         }
-        int Representatives = checkNumReps(args);
+
+        int Representatives =  checkNumReps(args);
         System.out.println("Number of Representatives: " + Representatives);
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
-        ArrayList<String> sortedList = sortedStateListMaker(dataList);
+        HashMap<String, Integer> initialMap = ListToHashMap(dataList);
+        ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap);
         //for (String x : dataList) System.out.println(x);
         HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         //int totalpop = getTotalPopulation(dataList,dataMap);
