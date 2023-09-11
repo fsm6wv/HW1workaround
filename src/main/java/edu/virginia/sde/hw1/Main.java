@@ -13,8 +13,7 @@ public class Main extends JeffersonApportionment{
             throw new ArrayIndexOutOfBoundsException("CSV file path is missing - should be entered" +
                     " through as a command line argument");
         }
-        //int Representatives = checkNumReps(args);
-        int Representatives = 4;
+        int Representatives = checkNumReps(args);
         System.out.println("Number of Representatives: " + Representatives);
         String file = args[0];
         ArrayList<String> dataList = ListMaker(file);
@@ -34,34 +33,6 @@ public class Main extends JeffersonApportionment{
 
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
         //Description: learning about try-with-resources
-
-
-//        try(FileReader filereader = new FileReader(file); CSVReader csvReader = new CSVReader(filereader)) {
-//            String [] fileline;
-//            //Resource Used: https://www.geeksforgeeks.org/reading-csv-file-java-using-opencsv
-//            //Description: Used to read file line by line till end of file
-//            csvReader.readNext();
-//            while((fileline=csvReader.readNext())!=null){
-//                String key = fileline[0].trim();
-//                String value = fileline[1].trim();
-//                datamap.put(key,Integer.parseInt(value));
-//                States.add(key);
-//                //Add here a way to split the lines into name and population, validate pop. value, store both
-//            }
-//
-//        }
-//        catch(NumberFormatException e){
-//            System.out.println("Invalid population: must be an integer value");
-//            System.exit(0);
-//        }
-//        catch(IOException e ){
-//            System.out.println("Unable to read file - IOException");
-//            System.exit(0);
-//        }catch(CsvValidationException ee){
-//            System.out.println("Unable to read file - CsvValidationException");
-//            System.exit(0);
-//        }
-
     }
 
 }

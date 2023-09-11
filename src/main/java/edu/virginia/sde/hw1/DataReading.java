@@ -53,9 +53,6 @@ public class DataReading {
         int lineNumber=0;
         for(String line: list){
             String[] components = line.split(",");
-            for (String x: components){
-                System.out.println(x);
-            }
             var state = components[0].strip();
             try {
                 if (components.length > 1) {
@@ -108,29 +105,6 @@ public class DataReading {
     }
 
 
-//    public static HashMap<String, Integer> HashMapMaker(String path){
-//        HashMap<String,Integer> datamap = new HashMap<>();
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader(path))) {// used chatgpt with format: "write a java function that reads a csv and stores it into a hashmap". Changed a bit of it to fit the assignment better
-//            br.readLine();
-//            String line = br.readLine();
-//            while(line != null){
-//                var list = line.split(",");
-//                if(list.length >=2){
-//
-//                }
-//            }
-//
-//        }
-//        catch (FileNotFoundException e){
-//            System.out.println("Invalid filename - file not found");
-//            System.exit(0);
-//        }
-//        catch(IOException e ) {
-//            System.out.println("Unable to read file - IOException");
-//            System.exit(0);
-//
-//        }
   }
 
 
