@@ -17,6 +17,47 @@ public class JeffersonApportionment extends DataReading {
         }
         return totalpop;
     }
+//    public static int findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps){
+//        //check to make sure that RealnumOfReps is a positive/ nonzero number
+//        if(RealnumOfReps <= 0){
+//            System.out.println("Improper input - Real representative count should be greater than 0" +
+//                    ", program ends");
+//            System.exit(0);
+//        }
+//        int totalpop = getTotalPopulation(statelist, datamap);
+//        if (RealnumOfReps > totalpop){
+//            System.out.println("Improper input - Can not have more Representatives than citizens");
+//            System.exit(0);
+//        }
+//        int divisor = totalpop / RealnumOfReps;
+//        int RepCount = 0;
+//        while (RepCount != RealnumOfReps) {
+//            RepCount = 0;
+//            for (String state : statelist) {
+//                RepCount += Math.floor(datamap.get(state) / divisor);
+//            }
+//            if (RepCount != RealnumOfReps) {
+//                if (RepCount > RealnumOfReps) {
+//                    divisor = divisor + divisor * 10/100;
+//                }
+//                else{
+//                    divisor = divisor- divisor*10/100;
+//                }
+//            }
+//        }
+//        return divisor;
+//
+//    }
+     public static HashMap<String, Integer> makeRepNMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
+         int divisor = findDivisor(statelist,datamap,RealnumOfReps);
+         HashMap<String, Integer> congress= new HashMap<>();
+         for (String state: statelist){
+             congress.put(state, datamap.get(state) / divisor);
+         }
+         return congress;
+     }
+
+
     public static int findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps){
         //check to make sure that RealnumOfReps is a positive/ nonzero number
         if(RealnumOfReps <= 0){
@@ -53,31 +94,4 @@ public class JeffersonApportionment extends DataReading {
         return divisor;
 
     }
-     public static HashMap<String, Integer> makeRepNMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
-         int divisor = findDivisor(statelist,datamap,RealnumOfReps);
-         HashMap<String, Integer> congress= new HashMap<>();
-         for (String state: statelist){
-             congress.put(state, datamap.get(state) / divisor);
-         }
-         return congress;
-     }
-
-
 }
-//    int divisor = totalpop / RealnumOfReps;
-//    int RepCount = 0;
-//        while (RepCount != RealnumOfReps) {
-//                RepCount = 0;
-//                for (String state : statelist) {
-//                RepCount += Math.floor(datamap.get(state) / divisor);
-//                }
-//                if (RepCount != RealnumOfReps) {
-//                if (RepCount > RealnumOfReps) {
-//                divisor = divisor + divisor * 5/100;
-//                }
-//                else{
-//                divisor = divisor- divisor*5/100;
-//                }
-//                }
-//                }
-//                return divisor;

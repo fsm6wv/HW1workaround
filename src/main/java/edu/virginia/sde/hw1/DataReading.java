@@ -53,19 +53,16 @@ public class DataReading {
         int lineNumber=0;
         for(String line: list){
             String[] components = line.split(",");
-            if (components.length <=2){
-                var state = components[0].strip();
-                try {
-                    var population = Integer.parseInt(components[1].strip());
-                    if (population > 0) {
-                        datamap.put(state, population);
-                    }
+            var state = components[0].strip();
+            try {
+                var population = Integer.parseInt(components[1].strip());
+                if (population > 0) {
+                    datamap.put(state, population);
                 }
-                catch(NumberFormatException e){
-                    System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
-                    System.exit(0);
-                }
-
+            }
+            catch(NumberFormatException e){
+                System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
+                System.exit(0);
             }
             lineNumber++;
         }
