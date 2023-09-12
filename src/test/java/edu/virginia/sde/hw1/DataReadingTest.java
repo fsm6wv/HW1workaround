@@ -6,8 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DataReadingTest {
     DataReading dataRead;
@@ -100,6 +99,42 @@ public class DataReadingTest {
         map.put("Delaware",990837);
         map.put("Florida",21570527);
         assertEquals(map, dataRead.ListToHashMap(list));
+    }
+    //checkNumReps
+    /*@Test
+    public void checkNumRepsTest(){
+        JeffersonApportionment jeff = new JeffersonApportionment();
+        ArrayList<String> list = dataRead.ListMaker(path);
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Alabama",5030053);
+        map.put("Alaska",736081);
+        map.put("Arizona",7158923);
+        map.put("Arkansas",3013756);
+        map.put("California",39576757);
+        map.put("Colorado",5782171);
+        map.put("Connecticut",3608298);
+        map.put("Delaware",990837);
+        map.put("Florida",21570527);
+        HashMap<String, Integer> actual = jeff.makeRepNMap(dataRead.sortedStateListMaker(list, map), map,115);
+        //calculate
+        int expected = 115;
+        assertEquals(expected, actual.values());
+
+    }*/
+    @Test
+    public void checkNumRepsTest1(){
+        String[] list1 = {"0","16"};
+        assertEquals(16, dataRead.checkNumReps(list1));
+    }
+    @Test
+    public void checkNumRepsTest2(){
+        String[] list2 = {"0", "-2"};
+        assertFalse(-2 == dataRead.checkNumReps(list2));
+    }
+    @Test
+    public void checkNumRepsTest3(){
+        String[] list3 = {"0", "a"};
+        assertFalse(0 == dataRead.checkNumReps(list3));
     }
     // numOfReps
    @Test
