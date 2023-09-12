@@ -74,18 +74,6 @@ public class DataReading {
         return datamap;
 
     }
-    public static int numOfReps(String num, int length){
-        int Representatives;
-        //Resource Used: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/Integer.html
-        //Description: used Integer class to parse/check user input (line 53)
-        if (length==2) {
-            Representatives = Integer.parseInt(num);
-        }
-        else{
-            Representatives=435;
-        }
-        return Representatives;
-    }
     public static int checkNumReps(String[] list){
         int Representatives = 435;
         if (list.length>=2) try{

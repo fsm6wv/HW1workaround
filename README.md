@@ -14,14 +14,12 @@ example of a command line code is "java -jar Apportionment.jar example_input.csv
 of all the states in the file and the # of representatives allocated to each one of them.]
 
 ## Contributions
-
-List the primary con~/Library/Application Support/JetBrains/<product><version>tributions of each author. It is recommended to update this with your contributions after each coding session.:
+List the primary contributions of each author. It is recommended to update this with your contributions after each coding session.:
 
 ### [Eric Sheetz]
 
-* Author 1 contributions
-* as a bulleted list
-* each line starts with an asterisk and a space
+* Wrote checkNumReps function
+* Helped with ListToHashMap and ListMaker functions
 
 ### [Dor Frechter]
 
@@ -37,5 +35,5 @@ List the primary con~/Library/Application Support/JetBrains/<product><version>tr
 * Tested with csv files using command line
 
 ## Issues
-
 List any known issues (bugs, incorrect behavior, etc.) at the time of submission.
+Its perfect

@@ -91,12 +91,12 @@ public class DataReadingTest {
         assertFalse(0 == dataRead.checkNumReps(list3));
     }
     // numOfReps
-   @Test
-    public void numOfRepsTest(){
-       // for length 2 (valid)
-       assertEquals(14, DataReading.numOfReps("14", 2));
-       // for length !2 (invalid)
-       assertEquals(435, DataReading.numOfReps("1", 1));
-   }
+//   @Test
+//    public void numOfRepsTest(){
+//       // for length 2 (valid)
+//       assertEquals(14, DataReading.numOfReps("14", 2));
+//       // for length !2 (invalid)
+//       assertEquals(435, DataReading.numOfReps("1", 1));
+//   }
 
 }
