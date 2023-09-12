@@ -32,9 +32,9 @@ List the primary con~/Library/Application Support/JetBrains/<product><version>tr
 
 ### [Christina Yang]
 
-* Author 3 contributions
-* as a bulleted list
-* each line starts with an asterisk and a space
+* Wrote JUnit tests in JeffersonApportionmentTest and DataReadingTest class
+* Tested with csv file using resources folder in IntelliJ
+* Tested with csv files using command line
 
 ## Issues
 
