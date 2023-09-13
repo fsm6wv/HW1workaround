@@ -22,9 +22,9 @@ public class JeffersonApportionment extends DataReading {
          double divisor = findDivisor(statelist,datamap,RealnumOfReps);
          HashMap<String, Integer> congress= new HashMap<>();
          for (String state: statelist) {
-             double x =datamap.get(state) / divisor;
-             int y = (int) x;
              if (datamap.get(state) != null) {
+                 double x =datamap.get(state) / divisor;
+                 int y = (int) x;
                  congress.put(state, y);
              }
          }
@@ -47,6 +47,7 @@ public class JeffersonApportionment extends DataReading {
         while (RepCount != RealnumOfReps) {
             RepCount = 0;
             for (String state : statelist) {
+                if(datamap.get(state) != null && datamap.get(state)>0)
                 RepCount += Math.floor(datamap.get(state) / divisor);
             }
             if (RepCount != RealnumOfReps) {

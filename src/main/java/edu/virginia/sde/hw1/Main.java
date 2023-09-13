@@ -10,24 +10,31 @@ public class Main extends JeffersonApportionment{
         //Description: used Integer class to parse user input
         //check to make sure that csv path is entered as a command line argument
         if(args.length < 1){
-            throw new ArrayIndexOutOfBoundsException("CSV file path is missing - should be entered" +
+            throw new ArrayIndexOutOfBoundsException("File path is missing - should be entered" +
                     " through as a command line argument");
         }
 
         int Representatives = checkNumReps(args);
-        System.out.println("Number of Representatives: " + Representatives);
+        //System.out.println("Number of Representatives: " + Representatives);
         String file = args[0];
+        int[] indexArr = indexFinder(file);
+        int popIndex = indexArr[1];
+        int stateIndex = indexArr[0];
         ArrayList<String> dataList = ListMaker(file);
-        HashMap<String, Integer> initialMap = ListToHashMap(dataList);
-        ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap);
+        HashMap<String, Integer> initialMap = unsortedListToHashMap(dataList,stateIndex,popIndex);
+        ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap,stateIndex);
         //for (String x : dataList) System.out.println(x);
-        HashMap<String,Integer> dataMap = ListToHashMap(dataList);
         //int totalpop = getTotalPopulation(dataList,dataMap);
-        HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,dataMap,Representatives);
+        HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,initialMap,Representatives);
+        System.out.println("State          |Population|Reps ");
         for (String key: sortedList) {
-            {
-                if (finalRepMap.get(key) != null)
-                    System.out.println("State: " + key + "           Number of Representatives: " + finalRepMap.get(key));
+            if (finalRepMap.get(key) != null){
+            String formatState = String.format("%-15s",key);
+            String pop = Integer.toString(initialMap.get(key));
+            String formattedPop = String.format("%10s", pop);
+            String stateRepNum = Integer.toString(finalRepMap.get(key));
+            String formattedStateRepNum = String.format("%5s",stateRepNum);
+            System.out.println(formatState +"|" + formattedPop+"|"+formattedStateRepNum);
             }
         }
         System.out.println("Total Number of Representatives: " + Representatives);
