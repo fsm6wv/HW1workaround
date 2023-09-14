@@ -1,8 +1,7 @@
 package edu.virginia.sde.hw1;
 
-import java.io.*;
 import java.util.*;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +29,7 @@ public class DataReadingTest {
         list.add("Connecticut,3608298");
         list.add("Delaware,990837");
         list.add("Florida,21570527");
-        assertEquals(list, dataRead.ListMaker(path));
+        assertEquals(list, dataRead.listMaker(path));
     }
 
     //listToHashMap

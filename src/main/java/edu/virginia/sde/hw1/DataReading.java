@@ -44,7 +44,7 @@ public class DataReading {
         int[] arr = {stateIndex,popIndex};
         return arr;
     }
-    public static ArrayList<String> ListMaker(String path) {
+    public static ArrayList<String> listMaker(String path) {
         ArrayList<String> DataList = new ArrayList<>();
         //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {

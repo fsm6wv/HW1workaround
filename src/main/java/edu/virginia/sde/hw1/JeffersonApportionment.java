@@ -23,9 +23,9 @@ public class JeffersonApportionment extends DataReading {
          HashMap<String, Integer> congress= new HashMap<>();
          for (String state: statelist) {
              if (datamap.get(state) != null) {
-                 double x =datamap.get(state) / divisor;
-                 int y = (int) x;
-                 congress.put(state, y);
+                 double newRepCount =datamap.get(state) / divisor;
+                 int castedRepCount = (int) newRepCount;
+                 congress.put(state, castedRepCount);
              }
          }
          return congress;

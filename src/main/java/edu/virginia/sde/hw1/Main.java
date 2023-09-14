@@ -14,18 +14,18 @@ public class Main extends JeffersonApportionment{
                     " through as a command line argument");
         }
 
-        int Representatives = checkNumReps(args);
-        //System.out.println("Number of Representatives: " + Representatives);
+        int representatives = checkNumReps(args);
+        //System.out.println("Number of representatives: " + representatives);
         String file = args[0];
         int[] indexArr = indexFinder(file);
         int popIndex = indexArr[1];
         int stateIndex = indexArr[0];
-        ArrayList<String> dataList = ListMaker(file);
+        ArrayList<String> dataList = listMaker(file);
         HashMap<String, Integer> initialMap = unsortedListToHashMap(dataList,stateIndex,popIndex);
         ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap,stateIndex);
         //for (String x : dataList) System.out.println(x);
         //int totalpop = getTotalPopulation(dataList,dataMap);
-        HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,initialMap,Representatives);
+        HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,initialMap,representatives);
         System.out.println("State           |Population|Reps ");
         for (String key: sortedList) {
             if (finalRepMap.get(key) != null){
@@ -37,7 +37,7 @@ public class Main extends JeffersonApportionment{
             System.out.println(formatState +"|" + formattedPop+"|"+formattedStateRepNum);
             }
         }
-        System.out.println("Total Number of Representatives: " + Representatives);
+        System.out.println("Total Number of representatives: " + representatives);
 
 
         //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
