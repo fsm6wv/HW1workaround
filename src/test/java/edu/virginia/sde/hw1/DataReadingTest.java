@@ -29,7 +29,7 @@ public class DataReadingTest {
         list.add("Connecticut,3608298");
         list.add("Delaware,990837");
         list.add("Florida,21570527");
-        assertEquals(list, dataRead.listMaker(path));
+        assertEquals(list, dataRead.csvFileReader(path));
     }
 
     //listToHashMap
