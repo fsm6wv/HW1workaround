@@ -27,6 +27,8 @@ List the primary contributions of each author. It is recommended to update this 
 * Wrote the methods dealing with making a hashmap of the states
 * wrote methods to get the number of representatives using binary search and hashmaps.
 * Tested with several csv files
+* Formatted output for part 2
+* Changed the functions for part 2 input
 
 ### [Christina Yang]
 

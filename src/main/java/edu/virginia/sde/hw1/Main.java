@@ -26,10 +26,10 @@ public class Main extends JeffersonApportionment{
         //for (String x : dataList) System.out.println(x);
         //int totalpop = getTotalPopulation(dataList,dataMap);
         HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,initialMap,Representatives);
-        System.out.println("State          |Population|Reps ");
+        System.out.println("State           |Population|Reps ");
         for (String key: sortedList) {
             if (finalRepMap.get(key) != null){
-            String formatState = String.format("%-15s",key);
+            String formatState = String.format("%-16s",key);
             String pop = Integer.toString(initialMap.get(key));
             String formattedPop = String.format("%10s", pop);
             String stateRepNum = Integer.toString(finalRepMap.get(key));
