@@ -11,6 +11,40 @@ import java.util.HashMap;
 
 
 public class DataReading {
+
+
+    public static boolean isExcel(String file){
+        String possibleXLSX = file.substring(file.length()-4);
+        if(possibleXLSX.equals("xlsx")){
+            return true;
+        }
+        return false;
+    }
+    public static boolean isCSV(String file) {
+        String possibleCSV = file.substring(file.length()-3);
+        if (possibleCSV.equals(("csv"))){
+            return true;
+        }
+        return false;
+    }
+
+    public static ArrayList<String> excelReader(String file){
+        ///implement this class
+        return null;
+
+    }
+    public static ArrayList<String> readFile(String file){
+        if(isCSV(file)){
+            return csvFileReader(file);
+        }
+        else if(isExcel(file)){
+            return excelReader(file);
+        }
+        System.out.println("File type invalid, can not continue");
+        System.exit(0);
+        return null;
+    }
+
     public static int[] indexFinder(String path) {
         int stateIndex = -1;
         int popIndex = -1;
@@ -18,9 +52,11 @@ public class DataReading {
             String[] components = br.readLine().split(",");
             for (int i = 0; i <components.length; i++){
                 if (components[i].strip().toLowerCase().equals("state")){
+                    System.out.println(components[i].strip().toLowerCase());
                     stateIndex = i;
                 }
                 else if (components[i].strip().toLowerCase().equals("population")){
+                    System.out.println(components[i].strip().toLowerCase());
                     popIndex = i;
                 }
             }

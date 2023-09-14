@@ -20,7 +20,7 @@ public class Main extends JeffersonApportionment{
         int[] indexArr = indexFinder(file);
         int popIndex = indexArr[1];
         int stateIndex = indexArr[0];
-        ArrayList<String> dataList = csvFileReader(file);
+        ArrayList<String> dataList = readFile(file);
         HashMap<String, Integer> initialMap = unsortedListToHashMap(dataList,stateIndex,popIndex);
         ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap,stateIndex);
         //for (String x : dataList) System.out.println(x);
