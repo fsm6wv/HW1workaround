@@ -1,4 +1,7 @@
 package edu.virginia.sde.hw1;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,8 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Iterator;
 
 
 public class DataReading {
@@ -28,10 +32,61 @@ public class DataReading {
         return false;
     }
 
-    public static ArrayList<String> excelReader(String file){
+    public static ArrayList<String> excelReader(String file) {
         ///implement this class
-        return null;
-
+        ArrayList<String> dataList = new ArrayList<>();
+        try {
+            FileInputStream excelFile = new FileInputStream(new File(file));
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> iterator = sheet.iterator();
+            while(iterator.hasNext()){
+                Row currentRow = iterator.next();
+                StringBuilder rowAsString = new StringBuilder();
+                Iterator<Cell> cellIterator = currentRow.iterator();
+                while (cellIterator.hasNext()) {
+                    Cell currentCell = cellIterator.next();
+                    rowAsString.append(currentCell.getStringCellValue()).append(",");
+                    if (rowAsString.length() > 0) {
+                        rowAsString.deleteCharAt(rowAsString.length() - 1);
+                    }
+                    dataList.add(rowAsString.toString());
+                }
+                workbook.close();
+                excelFile.close();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Invalid filename - file not found");
+            System.exit(0);
+        } catch (IOException e) {
+            System.out.println("Unable to read file - IOException");
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return dataList;
+    }
+    public static ArrayList<String> csvFileReader(String path) {
+        ArrayList<String> DataList = new ArrayList<>();
+        //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                DataList.add(line);
+            }
+            //check to see if data was read into arraylist
+            if(DataList.size() <= 0){
+                System.out.println("File is empty - no data was found, end the program");
+                System.exit(0);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Invalid filename - file not found");
+            System.exit(0);
+        } catch (IOException e) {
+            System.out.println("Unable to read file - IOException");
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return DataList;
     }
     public static ArrayList<String> readFile(String file){
         if(isCSV(file)){
@@ -79,30 +134,6 @@ public class DataReading {
         }
         int[] arr = {stateIndex,popIndex};
         return arr;
-    }
-    public static ArrayList<String> csvFileReader(String path) {
-        ArrayList<String> DataList = new ArrayList<>();
-        //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line1 = br.readLine(); //first line is titles
-            String line;
-            while ((line = br.readLine()) != null) {
-                DataList.add(line);
-            }
-            //check to see if data was read into arraylist
-            if(DataList.size() <= 0){
-                System.out.println("File is empty - no data was found, end the program");
-                System.exit(0);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Invalid filename - file not found");
-            System.exit(0);
-        } catch (IOException e) {
-            System.out.println("Unable to read file - IOException");
-            e.printStackTrace();
-            System.exit(0);
-        }
-        return DataList;
     }
     public static ArrayList<String> sortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map,int stateIndex){
         ArrayList<String> statelist = new ArrayList<>();

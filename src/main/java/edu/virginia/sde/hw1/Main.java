@@ -23,8 +23,6 @@ public class Main extends JeffersonApportionment{
         ArrayList<String> dataList = readFile(file);
         HashMap<String, Integer> initialMap = unsortedListToHashMap(dataList,stateIndex,popIndex);
         ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap,stateIndex);
-        //for (String x : dataList) System.out.println(x);
-        //int totalpop = getTotalPopulation(dataList,dataMap);
         HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,initialMap,representatives);
         System.out.println("State           |Population|Reps ");
         for (String key: sortedList) {
