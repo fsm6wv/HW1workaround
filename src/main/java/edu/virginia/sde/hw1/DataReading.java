@@ -33,7 +33,8 @@ public class DataReading {
     }
 
     public static ArrayList<String> excelReader(String file) {
-        ///implement this class
+
+        // asked chatGPT how to read an Excel file using java
         ArrayList<String> dataList = new ArrayList<>();
         try {
             FileInputStream excelFile = new FileInputStream(new File(file));
