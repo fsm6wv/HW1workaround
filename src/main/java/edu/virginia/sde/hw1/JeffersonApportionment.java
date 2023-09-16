@@ -6,16 +6,16 @@ import java.util.HashMap;
 public class JeffersonApportionment extends DataReading {
 
     public static int getTotalPopulation(ArrayList<String> list, HashMap<String, Integer> map) {
-        int totalpop = 0;
+        int totalPop = 0;
         for (String state : list) {
             if (state != null) {
                 if (map.get(state) != null) {
                     int x = map.get(state);
-                    totalpop = totalpop + x;
+                    totalPop = totalPop + x;
                 }
             }
         }
-        return totalpop;
+        return totalPop;
     }
 
      public static HashMap<String, Integer> makeRepNMap(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps) {
@@ -30,28 +30,28 @@ public class JeffersonApportionment extends DataReading {
          }
          return congress;
      }
-        public static double findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int RealnumOfReps){
-        //check to make sure that RealnumOfReps is a positive/ nonzero number
-        if(RealnumOfReps <= 0){
+        public static double findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int realNumOfReps){
+        //check to make sure that realNumOfReps is a positive/ nonzero number
+        if(realNumOfReps <= 0){
             System.out.println("Improper input - Real representative count should be greater than 0" +
                     ", program ends");
             System.exit(0);
         }
         int totalpop = getTotalPopulation(statelist, datamap);
-        if (RealnumOfReps > totalpop){
+        if (realNumOfReps > totalpop){
             System.out.println("Improper input - Can not have more Representatives than citizens");
             System.exit(0);
         }
-        double divisor = totalpop / RealnumOfReps;
-        int RepCount = 0;
-        while (RepCount != RealnumOfReps) {
-            RepCount = 0;
+        double divisor = totalpop / realNumOfReps;
+        int repCount = 0;
+        while (repCount != realNumOfReps) {
+            repCount = 0;
             for (String state : statelist) {
                 if(datamap.get(state) != null && datamap.get(state)>0)
-                RepCount += Math.floor(datamap.get(state) / divisor);
+                    repCount += Math.floor(datamap.get(state) / divisor);
             }
-            if (RepCount != RealnumOfReps) {
-                if (RepCount > RealnumOfReps) {
+            if (repCount != realNumOfReps) {
+                if (repCount > realNumOfReps) {
                     divisor += divisor *.1;
                 }
                 else{

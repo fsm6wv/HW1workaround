@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
 
@@ -19,25 +18,18 @@ public class DataReading {
 
     public static boolean isExcel(String file){
         String possibleXLSX = file.substring(file.length()-4);
-        if(possibleXLSX.equals("xlsx")){
-            return true;
-        }
-        return false;
+        return possibleXLSX.equals("xlsx");
     }
     public static boolean isCSV(String file) {
         String possibleCSV = file.substring(file.length()-3);
-        if (possibleCSV.equals(("csv"))){
-            return true;
-        }
-        return false;
+        return possibleCSV.equals(("csv"));
     }
 
     public static ArrayList<String> excelReader(String file) {
-
         // asked chatGPT how to read an Excel file using java
         ArrayList<String> dataList = new ArrayList<>();
         try {
-            FileInputStream excelFile = new FileInputStream(new File(file));
+            FileInputStream excelFile = new FileInputStream(file);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = sheet.iterator();
@@ -67,15 +59,15 @@ public class DataReading {
         return dataList;
     }
     public static ArrayList<String> csvFileReader(String path) {
-        ArrayList<String> DataList = new ArrayList<>();
+        ArrayList<String> dataList = new ArrayList<>();
         //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
-                DataList.add(line);
+                dataList.add(line);
             }
             //check to see if data was read into arraylist
-            if(DataList.size() <= 0){
+            if(dataList.size() <= 0){
                 System.out.println("File is empty - no data was found, end the program");
                 System.exit(0);
             }
@@ -87,7 +79,7 @@ public class DataReading {
             e.printStackTrace();
             System.exit(0);
         }
-        return DataList;
+        return dataList;
     }
     public static ArrayList<String> readFile(String file){
         if(isCSV(file)){
@@ -133,23 +125,22 @@ public class DataReading {
             e.printStackTrace();
             System.exit(0);
         }
-        int[] arr = {stateIndex,popIndex};
-        return arr;
+        return new int[]{stateIndex,popIndex};
     }
     public static ArrayList<String> sortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map,int stateIndex){
-        ArrayList<String> statelist = new ArrayList<>();
+        ArrayList<String> stateList = new ArrayList<>();
         for(String line: list) {
             String[] components = line.split(",");
             var state = components[stateIndex].strip();
             if (map.get(state) != null && map.get(state) >0)
-                statelist.add(state);
+                stateList.add(state);
         }
-        Collections.sort(statelist);
-        return statelist;
+        Collections.sort(stateList);
+        return stateList;
     }
 
     public static HashMap<String, Integer> unsortedListToHashMap(ArrayList<String> list, int stateIndex, int popIndex){
-        HashMap<String,Integer> datamap = new HashMap<>();
+        HashMap<String,Integer> dataMap = new HashMap<>();
         int lineNumber=0;
         for(String line: list){
             String[] components = line.split(",");
@@ -158,7 +149,7 @@ public class DataReading {
                     var state = components[stateIndex].strip();
                     var population = Integer.parseInt(components[popIndex].strip());
                     if (population > 0) {
-                        datamap.put(state, population);
+                        dataMap.put(state, population);
                     }
                 }
             }
@@ -168,27 +159,27 @@ public class DataReading {
             }
             lineNumber++;
         }
-        if (datamap.isEmpty()){
+        if (dataMap.isEmpty()){
             System.out.println("No valid data entries were found - apportionment aborted.");
             System.exit(0);
         }
-        return datamap;
+        return dataMap;
     }
     public static int checkNumReps(String[] list){
-        int Representatives = 435;
+        int representatives = 435;
         if (list.length>=2) try{
             int numReps = Integer.parseInt(list[1].strip());
             if(numReps<=0) {
                 System.out.println("Invalid User Input - Number of representatives must be positive and nonzero");
                 System.exit(0);
             }
-            Representatives = numReps;
+            representatives = numReps;
         }
         catch(NumberFormatException e){
             System.out.println("Invalid User Input - Number of representatives must be an integer");
             System.exit(0);
         }
-        return Representatives;
+        return representatives;
     }
 
 
