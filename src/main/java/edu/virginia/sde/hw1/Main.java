@@ -47,10 +47,6 @@ public class Main extends JeffersonApportionment{
             }
         }
         System.out.println("Total Number of representatives: " + representatives);
-
-
-        //Resource Used: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
-        //Description: learning about try-with-resources
     }
 
 }
