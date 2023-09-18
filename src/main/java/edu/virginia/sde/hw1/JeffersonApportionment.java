@@ -1,5 +1,4 @@
 package edu.virginia.sde.hw1;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

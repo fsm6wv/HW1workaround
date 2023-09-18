@@ -14,8 +14,7 @@ public class Main extends JeffersonApportionment{
                     " through as a command line argument");
         }
 
-        int representatives = 5000;//checkNumReps(args);
-        //System.out.println("Number of representatives: " + representatives);
+        int representatives = 435;//checkNumReps(args);
         String file = args[0];
         int[] indexArr;
         if(DataReading.isCSV(args[0])){

@@ -60,15 +60,22 @@ public class DataReading {
                 Iterator<Cell> cellIterator = currentRow.iterator();
                 while (cellIterator.hasNext()) {
                     Cell currentCell = cellIterator.next();
-                    rowAsString.append(getCellStringValue(currentCell)).append(",");
+                    if (currentCell == null || currentCell.getCellType() == CellType.BLANK) {
+                        rowAsString.append(",");
+                        System.out.println("EMPTY CELL");
+                    }
+                    else{
+                        rowAsString.append(getCellStringValue(currentCell)).append(",");
+                    }
                 }
-                dataList.add(rowAsString.toString());
                 if (rowAsString.length() > 0) {
                     rowAsString.deleteCharAt(rowAsString.length() - 1);
                 }
-                workbook.close();
-                excelFile.close();
+                System.out.println(rowAsString.toString());
+                dataList.add(rowAsString.toString());
             }
+            workbook.close();
+            excelFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Invalid filename - file not found");
             System.exit(0);
@@ -127,7 +134,7 @@ public class DataReading {
             Iterator<Cell> cellIterator = currentRow.iterator();
             while (cellIterator.hasNext()) {
                 Cell currentCell = cellIterator.next();
-                rowAsString.append(currentCell.getStringCellValue());
+                rowAsString.append(getCellStringValue(currentCell));
                 rowAsString.append(",");
             }
             if (rowAsString.length() > 0) {
@@ -136,10 +143,8 @@ public class DataReading {
             String[] components = rowAsString.toString().split(",");
                 for (int i = 0 ; i < components.length ; i++) {
                     if (components[i].strip().toLowerCase().equals("state")) {
-                        System.out.println(components[i].strip().toLowerCase());
                         stateIndex = i;
                     } else if (components[i].strip().toLowerCase().equals("population")) {
-                        System.out.println(components[i].strip().toLowerCase());
                         popIndex = i;
                     }
                 }
@@ -198,11 +203,18 @@ public class DataReading {
     }
     public static ArrayList<String> sortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map,int stateIndex){
         ArrayList<String> stateList = new ArrayList<>();
+        int counter=0;
         for(String line: list) {
             String[] components = line.split(",");
             var state = components[stateIndex].strip();
-            if (map.get(state) != null && map.get(state) >0)
-                stateList.add(state);
+            if(state.equals("")){
+                System.out.println("Invalid state name in column: " + counter + ". State name can not be an empty value");
+            }
+            else if(state != null) {
+                if (map.get(state) != null && map.get(state) > 0)
+                    stateList.add(state);
+            }
+            counter++;
         }
         Collections.sort(stateList);
         return stateList;
