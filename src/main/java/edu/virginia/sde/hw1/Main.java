@@ -14,7 +14,7 @@ public class Main extends JeffersonApportionment{
                     " through as a command line argument");
         }
 
-        int representatives = 435;//checkNumReps(args);
+        int representatives = checkNumReps(args);
         String file = args[0];
         ArrayList<String> dataList = readFile(file);
         int[] indexArr;
