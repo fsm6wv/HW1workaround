@@ -35,7 +35,9 @@ public class DataReading {
                     break;
                 case NUMERIC:
                     // Convert numeric value to a string
-                    value = String.valueOf(currentCell.getNumericCellValue());
+                    double v1 = currentCell.getNumericCellValue();
+                    int v2 = (int) v1;
+                    value = Integer.toString(v2);
             }
         }
         return value;
@@ -49,17 +51,18 @@ public class DataReading {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = sheet.iterator();
-            //skip first line
+            if (iterator.hasNext()) {
+                iterator.next(); // Skip the header
+            }
             while(iterator.hasNext()){
                 Row currentRow = iterator.next();
-                currentRow = iterator.next();
                 StringBuilder rowAsString = new StringBuilder();
                 Iterator<Cell> cellIterator = currentRow.iterator();
                 while (cellIterator.hasNext()) {
                     Cell currentCell = cellIterator.next();
                     rowAsString.append(getCellStringValue(currentCell)).append(",");
-                    dataList.add(rowAsString.toString());
                 }
+                dataList.add(rowAsString.toString());
                 if (rowAsString.length() > 0) {
                     rowAsString.deleteCharAt(rowAsString.length() - 1);
                 }
@@ -126,13 +129,11 @@ public class DataReading {
                 Cell currentCell = cellIterator.next();
                 rowAsString.append(currentCell.getStringCellValue());
                 rowAsString.append(",");
-                System.out.println(currentCell.getStringCellValue());
             }
             if (rowAsString.length() > 0) {
                 rowAsString.deleteCharAt(rowAsString.length() - 1);
             }
             String[] components = rowAsString.toString().split(",");
-            System.out.println(rowAsString.toString());
                 for (int i = 0 ; i < components.length ; i++) {
                     if (components[i].strip().toLowerCase().equals("state")) {
                         System.out.println(components[i].strip().toLowerCase());
@@ -170,11 +171,9 @@ public class DataReading {
             String[] components = br.readLine().split(",");
             for (int i = 0; i <components.length; i++){
                 if (components[i].strip().toLowerCase().equals("state")){
-                    System.out.println(components[i].strip().toLowerCase());
                     stateIndex = i;
                 }
                 else if (components[i].strip().toLowerCase().equals("population")){
-                    System.out.println(components[i].strip().toLowerCase());
                     popIndex = i;
                 }
             }
