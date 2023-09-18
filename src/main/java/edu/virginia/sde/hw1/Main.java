@@ -17,7 +17,13 @@ public class Main extends JeffersonApportionment{
         int representatives = 5000;//checkNumReps(args);
         //System.out.println("Number of representatives: " + representatives);
         String file = args[0];
-        int[] indexArr = indexFinder(file);
+        int[] indexArr;
+        if(DataReading.isCSV(args[0])){
+            indexArr = CSVIndexFinder(file);
+        }
+        else{
+            indexArr = excelIndexFinder(file);
+        }
         int popIndex = indexArr[1];
         int stateIndex = indexArr[0];
         ArrayList<String> dataList = readFile(file);

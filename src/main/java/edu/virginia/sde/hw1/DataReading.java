@@ -16,13 +16,29 @@ import java.util.Iterator;
 public class DataReading {
 
 
-    public static boolean isExcel(String file){
-        String possibleXLSX = file.substring(file.length()-4);
+    public static boolean isExcel(String file) {
+        String possibleXLSX = file.substring(file.length() - 4);
         return possibleXLSX.equals("xlsx");
     }
+
     public static boolean isCSV(String file) {
-        String possibleCSV = file.substring(file.length()-3);
+        String possibleCSV = file.substring(file.length() - 3);
         return possibleCSV.equals(("csv"));
+    }
+
+    public static String getCellStringValue(Cell currentCell) {
+        String value = null;
+        if (currentCell != null) {
+            switch (currentCell.getCellType()) {
+                case STRING:
+                    value = currentCell.getStringCellValue();
+                    break;
+                case NUMERIC:
+                    // Convert numeric value to a string
+                    value = String.valueOf(currentCell.getNumericCellValue());
+            }
+        }
+        return value;
     }
 
     public static ArrayList<String> excelReader(String file) {
@@ -33,17 +49,19 @@ public class DataReading {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = sheet.iterator();
+            //skip first line
             while(iterator.hasNext()){
                 Row currentRow = iterator.next();
+                currentRow = iterator.next();
                 StringBuilder rowAsString = new StringBuilder();
                 Iterator<Cell> cellIterator = currentRow.iterator();
                 while (cellIterator.hasNext()) {
                     Cell currentCell = cellIterator.next();
-                    rowAsString.append(currentCell.getStringCellValue()).append(",");
-                    if (rowAsString.length() > 0) {
-                        rowAsString.deleteCharAt(rowAsString.length() - 1);
-                    }
+                    rowAsString.append(getCellStringValue(currentCell)).append(",");
                     dataList.add(rowAsString.toString());
+                }
+                if (rowAsString.length() > 0) {
+                    rowAsString.deleteCharAt(rowAsString.length() - 1);
                 }
                 workbook.close();
                 excelFile.close();
@@ -93,8 +111,59 @@ public class DataReading {
         System.exit(0);
         return null;
     }
+    public static int[] excelIndexFinder(String path) {
+        int stateIndex = -1;
+        int popIndex = -1;
+        try {
+            FileInputStream excelFile = new FileInputStream(path);
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> iterator = sheet.iterator();
+            Row currentRow = iterator.next();
+            StringBuilder rowAsString = new StringBuilder();
+            Iterator<Cell> cellIterator = currentRow.iterator();
+            while (cellIterator.hasNext()) {
+                Cell currentCell = cellIterator.next();
+                rowAsString.append(currentCell.getStringCellValue());
+                rowAsString.append(",");
+                System.out.println(currentCell.getStringCellValue());
+            }
+            if (rowAsString.length() > 0) {
+                rowAsString.deleteCharAt(rowAsString.length() - 1);
+            }
+            String[] components = rowAsString.toString().split(",");
+            System.out.println(rowAsString.toString());
+                for (int i = 0 ; i < components.length ; i++) {
+                    if (components[i].strip().toLowerCase().equals("state")) {
+                        System.out.println(components[i].strip().toLowerCase());
+                        stateIndex = i;
+                    } else if (components[i].strip().toLowerCase().equals("population")) {
+                        System.out.println(components[i].strip().toLowerCase());
+                        popIndex = i;
+                    }
+                }
+                if (stateIndex == -1) {
+                    System.out.println("State column not found - can not continue");
+                    System.exit(0);
+                } else if (popIndex == -1) {
+                    System.out.println("Population column not found - can not continue");
+                    System.exit(0);
+                }
+        }
+        catch(FileNotFoundException e){
+                System.out.println("Invalid filename - file not found");
+                System.exit(0);
+            } catch(IOException e){
+                System.out.println("Unable to read file - IOException");
+                e.printStackTrace();
+                System.exit(0);
+            }
+            return new int[]{stateIndex, popIndex};
+        }
 
-    public static int[] indexFinder(String path) {
+
+
+    public static int[] CSVIndexFinder(String path) {
         int stateIndex = -1;
         int popIndex = -1;
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -149,7 +218,7 @@ public class DataReading {
                 if(stateIndex<components.length && popIndex<components.length && components.length>1){
                     var state = components[stateIndex].strip();
                     var population = Integer.parseInt(components[popIndex].strip());
-                    if (population > 0) {
+                    if (population > 0 && state != null && state != "") {
                         dataMap.put(state, population);
                     }
                 }
