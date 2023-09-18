@@ -1,5 +1,4 @@
 package edu.virginia.sde.hw1;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,7 +32,7 @@ public class JeffersonApportionment extends DataReading {
         public static double findDivisor(ArrayList<String> statelist, HashMap<String,Integer> datamap, int realNumOfReps){
         //check to make sure that realNumOfReps is a positive/ nonzero number
         if(realNumOfReps <= 0){
-            System.out.println("Improper input - Real representative count should be greater than 0" +
+            System.out.println("Improper input - representative count should be greater than 0" +
                     ", program ends");
             System.exit(0);
         }
