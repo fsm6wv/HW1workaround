@@ -62,6 +62,7 @@ public class DataReading {
         ArrayList<String> dataList = new ArrayList<>();
         //used geeksforgeeks "Reading a text file into a Java Hashmap" https://www.geeksforgeeks.org/reading-text-file-into-java-hashmap/
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            br.readLine();
             String line;
             while ((line = br.readLine()) != null) {
                 dataList.add(line);
