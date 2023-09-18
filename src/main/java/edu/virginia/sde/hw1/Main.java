@@ -16,18 +16,24 @@ public class Main extends JeffersonApportionment{
 
         int representatives = 435;//checkNumReps(args);
         String file = args[0];
+        ArrayList<String> dataList = readFile(file);
         int[] indexArr;
+        HashMap<String, Integer> initialMap = null;
+        ArrayList<String> sortedList =null;
         if(DataReading.isCSV(args[0])){
             indexArr = CSVIndexFinder(file);
+            int popIndex = indexArr[1];
+            int stateIndex = indexArr[0];
+            initialMap = csvFileToHashMap(dataList,stateIndex,popIndex);
+            sortedList = csvSortedStateListMaker(dataList,initialMap,stateIndex);
         }
         else{
             indexArr = excelIndexFinder(file);
+            int popIndex = indexArr[1];
+            int stateIndex = indexArr[0];
+            initialMap = excelFileToHashMap(dataList,stateIndex,popIndex);
+            sortedList = excelSortedStateListMaker(dataList,initialMap,stateIndex);
         }
-        int popIndex = indexArr[1];
-        int stateIndex = indexArr[0];
-        ArrayList<String> dataList = readFile(file);
-        HashMap<String, Integer> initialMap = unsortedListToHashMap(dataList,stateIndex,popIndex);
-        ArrayList<String> sortedList = sortedStateListMaker(dataList,initialMap,stateIndex);
         HashMap<String,Integer> finalRepMap = makeRepNMap(sortedList,initialMap,representatives);
         System.out.println("State           |Population|Reps ");
         for (String key: sortedList) {

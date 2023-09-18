@@ -40,34 +40,31 @@ public class DataReading {
                     value = Integer.toString(v2);
             }
         }
+        else{
+            value = " ";
+        }
         return value;
     }
 
     public static ArrayList<String> excelReader(String file) {
         // asked chatGPT how to read an Excel file using java
+        int[] indexList = excelIndexFinder(file);
+        int stateIndex = indexList[0];
+        int popIndex = indexList[1];
         ArrayList<String> dataList = new ArrayList<>();
         try {
             FileInputStream excelFile = new FileInputStream(file);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> iterator = sheet.iterator();
-            if (iterator.hasNext()) {
-                iterator.next(); // Skip the header
+            Iterator<Row> rowIterator = sheet.iterator();
+            if (rowIterator.hasNext()) {
+                rowIterator.next(); // Skip the header
             }
-            while(iterator.hasNext()){
-                Row currentRow = iterator.next();
+            while(rowIterator.hasNext()){
+                Row currentRow = rowIterator.next();
                 StringBuilder rowAsString = new StringBuilder();
-                Iterator<Cell> cellIterator = currentRow.iterator();
-                while (cellIterator.hasNext()) {
-                    Cell currentCell = cellIterator.next();
-                    if (currentCell == null || currentCell.getCellType() == CellType.BLANK) {
-                        rowAsString.append(",");
-                        System.out.println("EMPTY CELL");
-                    }
-                    else{
-                        rowAsString.append(getCellStringValue(currentCell)).append(",");
-                    }
-                }
+                rowAsString.append(getCellStringValue((currentRow.getCell(stateIndex)))).append(",");
+                rowAsString.append(getCellStringValue((currentRow.getCell(popIndex)))).append(",");
                 if (rowAsString.length() > 0) {
                     rowAsString.deleteCharAt(rowAsString.length() - 1);
                 }
@@ -201,7 +198,25 @@ public class DataReading {
         }
         return new int[]{stateIndex,popIndex};
     }
-    public static ArrayList<String> sortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map,int stateIndex){
+    public static ArrayList<String> excelSortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map, int stateIndex){
+        ArrayList<String> stateList = new ArrayList<>();
+        int counter=0;
+        for(String line: list) {
+            String[] components = line.split(",");
+            var state = components[0].strip();
+            if(state.equals("")){
+                System.out.println("Invalid state name in column: " + counter + ". State name can not be an empty value");
+            }
+            else if(state != null) {
+                if (map.get(state) != null && map.get(state) > 0)
+                    stateList.add(state);
+            }
+            counter++;
+        }
+        Collections.sort(stateList);
+        return stateList;
+    }
+    public static ArrayList<String> csvSortedStateListMaker(ArrayList<String> list, HashMap<String,Integer> map, int stateIndex){
         ArrayList<String> stateList = new ArrayList<>();
         int counter=0;
         for(String line: list) {
@@ -219,8 +234,30 @@ public class DataReading {
         Collections.sort(stateList);
         return stateList;
     }
+    public static HashMap<String,Integer> excelFileToHashMap(ArrayList<String> list, int stateIndex, int popIndex){
+        HashMap<String,Integer> dataMap = new HashMap<>();
+        int lineNumber=0;
+        for(String line: list){
+            String[] components = line.split(",");
+            try {
+                var state = components[0].strip();
+                var population = Integer.parseInt(components[1].strip());
+                dataMap.put(state, population);
+            }
+            catch(NumberFormatException e){
+                System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
+                //System.exit(0);
+            }
+            lineNumber++;
+        }
+        if (dataMap.isEmpty()){
+            System.out.println("No valid data entries were found - apportionment aborted.");
+            System.exit(0);
+        }
+        return dataMap;
+    }
 
-    public static HashMap<String, Integer> unsortedListToHashMap(ArrayList<String> list, int stateIndex, int popIndex){
+    public static HashMap<String, Integer> csvFileToHashMap(ArrayList<String> list, int stateIndex, int popIndex){
         HashMap<String,Integer> dataMap = new HashMap<>();
         int lineNumber=0;
         for(String line: list){
@@ -229,7 +266,7 @@ public class DataReading {
                 if(stateIndex<components.length && popIndex<components.length && components.length>1){
                     var state = components[stateIndex].strip();
                     var population = Integer.parseInt(components[popIndex].strip());
-                    if (population > 0 && state != null && state != "") {
+                    if (population > 0 && state != null) {
                         dataMap.put(state, population);
                     }
                 }
