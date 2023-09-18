@@ -68,7 +68,6 @@ public class DataReading {
                 if (rowAsString.length() > 0) {
                     rowAsString.deleteCharAt(rowAsString.length() - 1);
                 }
-                System.out.println(rowAsString.toString());
                 dataList.add(rowAsString.toString());
             }
             workbook.close();
@@ -242,7 +241,12 @@ public class DataReading {
             try {
                 var state = components[0].strip();
                 var population = Integer.parseInt(components[1].strip());
-                dataMap.put(state, population);
+                if(population<0){
+                    System.out.println("Invalid input. State: " + state + " can not have a negative population");
+                }
+                else if (population >= 0 && state != null) {
+                    dataMap.put(state, population);
+                }
             }
             catch(NumberFormatException e){
                 System.out.println("Line "+lineNumber+": Bad input: "+components[1].strip());
@@ -266,7 +270,10 @@ public class DataReading {
                 if(stateIndex<components.length && popIndex<components.length && components.length>1){
                     var state = components[stateIndex].strip();
                     var population = Integer.parseInt(components[popIndex].strip());
-                    if (population > 0 && state != null) {
+                    if(population<0){
+                        System.out.println("Invalid input. State: " + state + " can not have a negative population");
+                    }
+                    else if (population >= 0 && state != null) {
                         dataMap.put(state, population);
                     }
                 }
