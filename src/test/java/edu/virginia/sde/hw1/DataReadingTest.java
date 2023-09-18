@@ -148,42 +148,91 @@ public class DataReadingTest {
     //error: invalid filename
     @Test
     public void excelReaderCheck2(){
-
+    String file = "lost";
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.excelReader(file));
     }
     //error: unable to read file
-    @Test
+    /*@Test
     public void excelReaderCheck3(){
-
-    }
+    String file = ;
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.excelReader(file));
+    }*/
     //normal input
     @Test
     public void csvFileReader1(){
-
+      String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations.csv";
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.csvFileReader(file));
     }
     //error: file is empty
     @Test
     public void csvFileReader2(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/empty.csv";
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.csvFileReader(file));
     }
     //error: invalid filename
     @Test
     public void csvFileReader3(){
-
+     String file = "file";
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.csvFileReader(file));
     }
     //error: unable to read file
-    @Test
+    /*@Test
     public void csvFileReader4(){
 
-    }
+    }*/
     //normal input
     @Test
     public void readFileCheck1(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations.csv";
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.readFile(file));
+     String file2 = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/lessStatePopulations.xlsx";
+     ArrayList<String> result2 = new ArrayList<>();
+     result2.add("Alabama,5030053");
+     result2.add("Alaska,736081");
+     result2.add("Arizona,7158923");
+     result2.add("Arkansas,3013756");
+     assertEquals(result, dataRead.readFile(file2));
     }
     //error: file type invalid
     @Test
     public void readFileCheck2(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/file.txt";
+     ArrayList<String> result = new ArrayList<>();
+     result.add("Alabama,5030053");
+     result.add("Alaska,736081");
+     result.add("Arizona,7158923");
+     result.add("Arkansas,3013756");
+     assertEquals(result, dataRead.readFile(file));
     }
     //normal implementation
     @Test
