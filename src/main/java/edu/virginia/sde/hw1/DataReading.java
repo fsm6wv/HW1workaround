@@ -1,4 +1,5 @@
 package edu.virginia.sde.hw1;
+import org.apache.poi.EmptyFileException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -78,6 +79,13 @@ public class DataReading {
         } catch (IOException e) {
             System.out.println("Unable to read file - IOException");
             e.printStackTrace();
+            System.exit(0);
+        } catch (EmptyFileException e){
+            System.out.println("File is empty - no data was found, end the program");
+            System.exit(0);
+        }
+        if(dataList.size() <= 0){
+            System.out.println("File has no valid lines - no data was found, end the program");
             System.exit(0);
         }
         return dataList;
