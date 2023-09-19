@@ -30,7 +30,7 @@ List the primary contributions of each author. It is recommended to update this 
 * Tested with several csv files
 * Formatted output for part 2
 * Changed the functions, so they look for index of state and population column and iterate based on index
-* Created method to read Excel file and handled whether a file is excel or csv
+* Handeled excel file reading
 
 ### [Christina Yang]
 
