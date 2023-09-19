@@ -197,7 +197,19 @@ public class DataReadingTest {
      result.add("Arkansas,3013756");
      assertEquals(result, dataRead.excelReader(file));
     }
-
+ //empty xlsx file
+ @Test
+ public void excelReaderCheck3(){
+  //String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/empty.xlsx";
+  String file = "/Users/Eric/IdeaProjects/HW1workaround/src/test/resources/empty.xlsx";
+  ArrayList<String> result = new ArrayList<>();
+  try {
+   dataRead.excelReader(file);
+  }catch(org.apache.poi.EmptyFileException e){
+      return;
+  }
+  assertEquals(result, dataRead.excelReader(file));
+ }
     //normal input
     @Test
     public void csvFileReader1(){
