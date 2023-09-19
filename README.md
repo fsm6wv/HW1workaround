@@ -20,6 +20,7 @@ List the primary contributions of each author. It is recommended to update this 
 
 * Wrote checkNumReps function
 * Helped with ListToHashMap and ListMaker functions
+* Data Reading Testing
 
 ### [Dor Frechter]
 
@@ -41,4 +42,4 @@ List the primary contributions of each author. It is recommended to update this 
 
 ## Issues
 List any known issues (bugs, incorrect behavior, etc.) at the time of submission.
-It's perfect
+It's perfect (I think)

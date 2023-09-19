@@ -10,7 +10,7 @@ public class JeffersonApportionmentTest {
     // Jefferson Apportionment Testing:
     // getTotalPopulation()
     @Test
-    public void getTotalPopulationTest() {
+    public void getTotalPopulationTest1() {
         var jeff = new JeffersonApportionment();
         // putting data from sample code into hashmap
         HashMap<String, Integer> map = new HashMap<>();
@@ -25,6 +25,7 @@ public class JeffersonApportionmentTest {
         list.add("Arkansas");
         assertEquals(15938813, jeff.getTotalPopulation(list, map));
     }
+
     //normal implementation
    @Test
     public void findDivisorTest1(){
