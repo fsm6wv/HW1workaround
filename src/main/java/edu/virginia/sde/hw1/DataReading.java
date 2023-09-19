@@ -212,7 +212,7 @@ public class DataReading {
             String[] components = line.split(",");
             var state = components[0].strip();
             if(state.equals("")){
-                System.out.println("Invalid state name in column: " + counter + ". State name can not be an empty value");
+                System.out.println("Invalid state name in row: " + counter + ". State name can not be an empty value");
             }
             else if(state != null) {
                 if (map.get(state) != null && map.get(state) > 0)
@@ -230,7 +230,7 @@ public class DataReading {
             String[] components = line.split(",");
             var state = components[stateIndex].strip();
             if(state.equals("")){
-                System.out.println("Invalid state name in column: " + counter + ". State name can not be an empty value");
+                System.out.println("Invalid state name in row: " + counter + ". State name can not be an empty value");
             }
             else if(state != null) {
                 if (map.get(state) != null && map.get(state) > 0)
