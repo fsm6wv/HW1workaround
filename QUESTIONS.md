@@ -22,9 +22,9 @@ all these things could make the code much more readable and easier to build on f
 Looking back, which part was more difficult? Part 1, where you had to start from scratch, or Part 2, where you had to change existing code. Explain your answer, citing any specific challenges. In hindsight, would you do anything differently?
  
 
-[Part one was definetely harder, as we had to figure how every aspect of this program should operate, what are the efficient
+[Part one was definitely harder, as we had to figure how every aspect of this program should operate, what are the efficient
 ways to do things, and how to manage work within a group. In part 2 we already knew what all the functions were doing,
-understood the task in a deeper sense initially compare to part 1, and were immediatly ready to work. We only had to reimplement
+understood the task in a deeper sense initially compare to part 1, and were immediately ready to work. We only had to reimplement
 a few methods based on existing code, while some classes and methods were not changed (JeffersonApportionment). The main point is that
 building on from previous work is easier than building everything from scratch. For that reason, it is important we maintain
 organized code that is understandable, so we can work from it in the future. Not to say that this assignment was written in a neat
