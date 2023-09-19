@@ -35,6 +35,7 @@ List the primary contributions of each author. It is recommended to update this 
 
 * Wrote the JUnit tests in JeffersonApportionmentTest and DataReadingTest class
 * Helped write error messages for certain edge cases
+* Tested with csv and excel files in terminal
 * Tested with csv and excel files using resources folder in IntelliJ
 
 

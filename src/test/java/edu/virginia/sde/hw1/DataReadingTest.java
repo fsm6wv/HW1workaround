@@ -124,16 +124,6 @@ public class DataReadingTest {
         String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations.xlsx";
         assertFalse(dataRead.isCSV(file));
     }
-    //normal input - String (state)
-    @Test
-    public void getCellStringValueCheck1(){
-
-    }
-    //normal input - numeric (population)
-    @Test
-    public void getCellStringValueCheck2(){
-
-    }
     //normal input
     @Test
     public void excelReaderCheck1(){
@@ -156,17 +146,7 @@ public class DataReadingTest {
      result.add("Arkansas,3013756");
      assertEquals(result, dataRead.excelReader(file));
     }
-    //error: unable to read file
-    /*@Test
-    public void excelReaderCheck3(){
-    String file = ;
-     ArrayList<String> result = new ArrayList<>();
-     result.add("Alabama,5030053");
-     result.add("Alaska,736081");
-     result.add("Arizona,7158923");
-     result.add("Arkansas,3013756");
-     assertEquals(result, dataRead.excelReader(file));
-    }*/
+
     //normal input
     @Test
     public void csvFileReader1(){
@@ -200,11 +180,7 @@ public class DataReadingTest {
      result.add("Arkansas,3013756");
      assertEquals(result, dataRead.csvFileReader(file));
     }
-    //error: unable to read file
-    /*@Test
-    public void csvFileReader4(){
 
-    }*/
     //normal input
     @Test
     public void readFileCheck1(){
@@ -237,66 +213,58 @@ public class DataReadingTest {
     //normal implementation
     @Test
     public void excelIndexFinderCheck1(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations_mixed_columns.xlsx";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.excelIndexFinder(file));
     }
     //error: no state column found
     @Test
     public void excelIndexFinderCheck2(){
-
+    String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations_noStates.xlsx";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.excelIndexFinder(file));
     }
     //error: no population column found
     @Test
     public void excelIndexFinderCheck3(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations_noPop.xlsx";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.excelIndexFinder(file));
     }
     //error: invalid filename
     @Test
     public void excelIndexFinderCheck4(){
-
-    }
-    //error: unable to read file
-    @Test
-    public void excelIndexFinderCheck5(){
-
+     String file = "blank";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.excelIndexFinder(file));
     }
     //normal implementation
     @Test
     public void CSVIndexFinderCheck1(){
-
+    String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulations_mixed_columns.csv";
+    int[] result = {1,3};
+     assertArrayEquals(result, dataRead.CSVIndexFinder(file));
     }
     //error: no state column found
     @Test
     public void CSVIndexFinderCheck2(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulationsNoState.csv";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.CSVIndexFinder(file));
     }
     //error: no population column found
     @Test
     public void CSVIndexFinderCheck3(){
-
+     String file = "/Users/christinayang/IdeaProjects/HW1workaround/src/test/resources/statePopulationsNoPop.csv";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.CSVIndexFinder(file));
     }
     //error: invalid filename
     @Test
     public void CSVIndexFinderCheck4(){
-
+     String file = "blank";
+     int[] result = {1,3};
+     assertArrayEquals(result, dataRead.CSVIndexFinder(file));
     }
-    //error: unable to read file
-    @Test
-    public void CSVIndexFinderCheck5(){
 
-    }
-    //normal implementation
-    @Test
-    public void unsortedListToHashmapCheck1(){
-
-    }
-    //error: bad input
-    @Test
-    public void unsortedListToHashmapCheck2(){
-
-    }
-    //error: no valid entries found
-    @Test
-    public void unsortedListToHashmapCheck3(){
-
-    }
 }
